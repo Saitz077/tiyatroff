@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@model List<Student>
+<h1>Öğrenciler</h1>
+<table class=" table">
+    <thead>
+        <tr>
+            <th> No</th>
+            <th> Ad</th>
+            <th> Soyad</th>
+            <th> Sınıf</th>
+            <th> Ders Tanımı</th>
+            <th> Kredi</th>
+            <th> Sınav Tarihi</th>
+            <th> Vize Notu</th>
+            <th> Final Notu</th>
+            <th> Ortalama</th>
+            <th> Harf Notu</th>
+            <th> İşlem</th>
+
+        </tr>
+    </thead> 
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+               <td>@item.ad</td>
+                <td>@item.soyad</td>
+                    <td>@item.sinif</td>
+                        <td>@item.dersTanimi</td>
+                            <td>@item.kredi</td>
+                                <td>@item.sinavTarihi</td>
+                                    <td>@item.vizeNot</td>
+                                        <td>@item.finalNot</td>
+                                            <td>@item.ortalama</td>
+                                                <td>@item.harfNotu</td>
+                <td><a asp-controller="student" asp-action="remove" asp-route-id="@item.Id">Sil</a></td>
+                <td><a asp-controller="student" asp-action="edit" asp-route-id="@item.Id">Güncelle</a></td>
+                <td><a asp-controller="student" asp-action="details" asp-route-id="@item.Id">Detay</a></td>
+        </tr>
+    }
+    <td><a asp-controller="student" asp-action="add" >Ekle</a></td>
+    </tbody>
+</table>
+
+
+
+

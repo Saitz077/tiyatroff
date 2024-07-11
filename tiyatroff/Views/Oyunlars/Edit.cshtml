@@ -1,0 +1,53 @@
+﻿@model tiyatroff.Models.Oyunlar
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Oyunları Düzenle</h1>
+
+<h4>Oyunlar</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="OyunId" />
+            <div class="form-group">
+                <label asp-for="OyunAd" class="control-label"></label>
+                <input asp-for="OyunAd" class="form-control" />
+                <span asp-validation-for="OyunAd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="ImageFile">Yeni Resim:</label>
+                <input type="file" name="ImageFile" />
+            </div>
+            <div class="form-group">
+                <label asp-for="OyunTur" class="control-label"></label>
+                <input asp-for="OyunTur" class="form-control" />
+                <span asp-validation-for="OyunTur" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Yonetmen" class="control-label"></label>
+                <input asp-for="Yonetmen" class="form-control" />
+                <span asp-validation-for="Yonetmen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sure" class="control-label"></label>
+                <input asp-for="Sure" class="form-control" />
+                <span asp-validation-for="Sure" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Listeye Dön</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

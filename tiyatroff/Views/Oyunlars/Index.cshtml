@@ -1,0 +1,71 @@
+﻿@model IEnumerable<tiyatroff.Models.Oyunlar>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Tiyatro Oyunları</h1>
+
+<p>
+    <a asp-action="Create">Oyun Ekle</a>
+</p>
+<table class="table table-bordered table-striped" id="list">
+    <thead class="bg-dark text-white">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OyunAd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OyunFoto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OyunTur)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Yonetmen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sure)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OyunAd)
+            </td>
+            <td>
+                    <img src="@item.OyunFoto"  width="50" height="50" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OyunTur)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Yonetmen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sure)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.OyunId">Düzenle</a> |
+                <a asp-action="Details" asp-route-id="@item.OyunId">Detaylar</a> |
+                <a asp-action="Delete" asp-route-id="@item.OyunId">Sil</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css" />
+
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#list').DataTable({
+        });
+    });
+</script>

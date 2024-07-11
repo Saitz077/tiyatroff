@@ -1,0 +1,77 @@
+﻿@model IEnumerable<ders.Models.UrunTbl>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table table-bordered table-striped" id="tbllist">
+    <thead class="bg-dark text-white">
+        <tr>
+            <th>
+               Ürün Adı
+            </th>
+            <th>
+                Fiyat
+            </th>
+            <th>
+                Adet
+            </th>
+            <th>
+               Ürün Görseli
+            </th>
+            <th>
+                Favori
+            </th>
+            <th>
+                Kategori Bilgisi
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UrunAd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UrunFiyat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UrunAdet)
+            </td>
+            <td>
+                    <img src="@("~/Image/"+item.UrunPhoto)" asp-append-version=true width="50" height="50" />
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.FavoriUrun)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kategori.KategoriAd)
+            </td>
+            <td>
+                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.UrunId">Edit</a> |
+                <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.UrunId">Details</a> |
+                <a class="btn btn-danger"asp-action="Delete" asp-route-id="@item.UrunId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.6/css/dataTables.dataTables.css" />
+<script src="https://cdn.datatables.net/2.0.6/js/dataTables.js"></script>
+<script type="text/javascript">
+    var js = jQuery.noConflict(true);
+    js(document).ready(function () {
+        js('#tbllist').DataTable({
+
+        });
+    });
+</script>

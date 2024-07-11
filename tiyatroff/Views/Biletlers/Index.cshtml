@@ -1,0 +1,66 @@
+﻿@model IEnumerable<tiyatroff.Models.Biletler>
+
+@{
+    ViewData["Title"] = "Biletler";
+}
+
+<h1>Biletler</h1>
+
+<p>
+    <a asp-action="Create">Bilet Ekle</a>
+</p>
+<table class="table table-bordered table-striped" id="list">
+    <thead class="bg-dark text-white">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Gosterim.Oyun)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.Fiyat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Satistarih)
+            </th>
+         
+          
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gosterim.Oyun.OyunAd)
+                </td>
+               
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fiyat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Satistarih)
+                </td>
+              
+                
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.BiletId">Düzenle</a> |
+                    <a asp-action="Details" asp-route-id="@item.BiletId">Detaylar</a> |
+                    <a asp-action="Delete" asp-route-id="@item.BiletId">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css" />
+
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#list').DataTable({
+        });
+    });
+</script>

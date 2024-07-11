@@ -1,0 +1,55 @@
+﻿@model odevalbum.Models.TabloSanat
+
+@{
+    ViewData["Title"] = "Update";
+}
+
+<h1>Güncelle</h1>
+
+<h4>TabloSanat</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Update">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id"/>
+            <div class="form-group">
+                <label asp-for="No" class="control-label">No </label>
+                <input asp-for="No" class="form-control" />
+                <span asp-validation-for="No" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tur" class="control-label">Albüm Tür</label>
+                <input asp-for="Tur" class="form-control" />
+                <span asp-validation-for="Tur" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SanatciBilgi" class="control-label">Sanatçı Bilgi</label>
+                <input asp-for="SanatciBilgi" class="form-control" />
+                <span asp-validation-for="SanatciBilgi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AlbumAdi" class="control-label">Albüm Adı</label>
+                <input asp-for="AlbumAdi" class="form-control" />
+                <span asp-validation-for="AlbumAdi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fiyat" class="control-label"></label>
+                <input asp-for="Fiyat" class="form-control" />
+                <span asp-validation-for="Fiyat" class="text-danger"></span>
+            </div>
+         
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Yerli" /> @Html.DisplayNameFor(model => model.Yerli)
+                </label>
+            </div>
+           
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Listeye Dön</a>
+</div>
+

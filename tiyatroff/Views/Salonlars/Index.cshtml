@@ -1,0 +1,53 @@
+﻿@model IEnumerable<tiyatroff.Models.Salonlar>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SalonAd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SalonAdres)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SalonNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ilce)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalonAd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalonAdres)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalonNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ilce.IlceId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.SalonId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.SalonId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.SalonId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

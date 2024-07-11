@@ -1,0 +1,61 @@
+﻿@model ders.Models.UrunTbl
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>UrunTbl</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="UrunId" />
+            <div class="form-group">
+                <label asp-for="KategoriId" class="control-label"></label>
+                <select asp-for="KategoriId" class="form-control" asp-items="ViewBag.KategoriId">
+                    <option value="">Kategoriyi Seçin</option>
+                </select>
+                <span asp-validation-for="KategoriId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UrunAd" class="control-label"></label>
+                <input asp-for="UrunAd" class="form-control" />
+                <span asp-validation-for="UrunAd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UrunFiyat" class="control-label"></label>
+                <input asp-for="UrunFiyat" class="form-control" />
+                <span asp-validation-for="UrunFiyat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UrunAdet" class="control-label"></label>
+                <input asp-for="UrunAdet" class="form-control" />
+                <span asp-validation-for="UrunAdet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UrunPhoto" class="control-label"></label>
+                <input asp-for="UrunPhoto" class="form-control" />
+                <span asp-validation-for="UrunPhoto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FavoriUrun" class="control-label"></label>
+                <input asp-for="FavoriUrun" class="form-control" />
+                <span asp-validation-for="FavoriUrun" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

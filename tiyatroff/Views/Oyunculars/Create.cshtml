@@ -1,0 +1,58 @@
+﻿@model tiyatroff.Models.Oyuncular
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Oyuncu Ekle</h1>
+
+<h4>Oyuncular</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="OyuncuId" class="control-label">Oyuncu ID</label>
+                <input asp-for="OyuncuId" class="form-control" />
+                <span asp-validation-for="OyuncuId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OyuncuAd" class="control-label">Oyuncu Adı</label>
+                <input asp-for="OyuncuAd" class="form-control" />
+                <span asp-validation-for="OyuncuAd" class="text-danger"></span>
+            </div>
+            @* <div class="form-group">
+                <label asp-for="OyuncuFoto" class="control-label">Oyuncu Fotoğrafı</label>
+                <input asp-for="OyuncuFoto" class="form-control" />
+                <span asp-validation-for="OyuncuFoto" class="text-danger"></span>
+            </div> *@
+            <div class="form-group">
+                <label asp-for="ImageFile" class="control-label">Resim Dosyası</label>
+                <input asp-for="ImageFile" accept="image/*" class="form-control" />
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Universite" class="control-label">Üniversite</label>
+                <input asp-for="Universite" class="form-control" />
+                <span asp-validation-for="Universite" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TelNo" class="control-label">Telefon Numarası</label>
+                <input asp-for="TelNo" class="form-control" />
+                <span asp-validation-for="TelNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Listeye Dön</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

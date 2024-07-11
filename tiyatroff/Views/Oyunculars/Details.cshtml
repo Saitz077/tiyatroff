@@ -1,0 +1,43 @@
+﻿@model tiyatroff.Models.Oyuncular
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detaylar</h1>
+
+<div>
+    <h4>Oyuncular</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Oyuncu Adı
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OyuncuAd)
+        </dd>
+        <dt class="col-sm-2">
+            Oyuncu Fotoğrafı
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OyuncuFoto)
+        </dd>
+        <dt class="col-sm-2">
+            Üniversite
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Universite)
+        </dd>
+        <dt class="col-sm-2">
+            Telefon Numarası
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TelNo)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.OyuncuId">Düzenle</a> |
+    <a asp-action="Index">Listeye Dön</a>
+</div>

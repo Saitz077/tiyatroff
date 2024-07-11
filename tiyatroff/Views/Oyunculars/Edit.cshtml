@@ -1,0 +1,48 @@
+﻿@model tiyatroff.Models.Oyuncular
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Düzenle</h1>
+
+<h4>Oyuncular</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="OyuncuId" />
+            <div class="form-group">
+                <label asp-for="OyuncuAd" class="control-label"></label>
+                <input asp-for="OyuncuAd" class="form-control" />
+                <span asp-validation-for="OyuncuAd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="ImageFile">Yeni Resim:</label>
+                <input type="file" name="ImageFile" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Universite" class="control-label"></label>
+                <input asp-for="Universite" class="form-control" />
+                <span asp-validation-for="Universite" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TelNo" class="control-label"></label>
+                <input asp-for="TelNo" class="form-control" />
+                <span asp-validation-for="TelNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Listeye Dön</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

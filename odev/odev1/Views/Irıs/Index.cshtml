@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON Content</title>
+</head>
+<body>
+    <div>
+        <h2>JSON Content</h2>
+        @{
+            var jsonContent = System.Text.Encoding.Default.GetString(ViewData["JsonContent"] as byte[]);
+        }
+        <pre>@jsonContent</pre>
+    </div>
+</body>
+</html>

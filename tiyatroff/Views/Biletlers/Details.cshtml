@@ -1,0 +1,36 @@
+﻿@model tiyatroff.Models.Biletler
+
+@{
+    ViewData["Title"] = "Detaylar";
+}
+
+<h1>Detaylar</h1>
+
+<div>
+    <h4>Biletler</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Satistarih)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Satistarih)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Fiyat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Fiyat)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Gosterim)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Gosterim.GosterimId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.BiletId">Düzenle</a> |
+    <a asp-action="Index">Listeye Dön</a>
+</div>

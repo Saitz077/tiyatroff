@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Ogreciler.Models.Student>
+
+@{
+    ViewData["Title"] = "Listele";
+}
+
+<h1>Listele</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.soyad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dersTanimi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sinif)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.kredi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sinavTarihi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.vizeNot)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.finalNot)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ortalama)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.harfNotu)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.soyad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dersTanimi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sinif)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.kredi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sinavTarihi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.vizeNot)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.finalNot)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ortalama)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.harfNotu)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

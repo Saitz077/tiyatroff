@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@model List<TabloSanat>
+<h1>Albümler</h1>
+
+<a asp-controller="album" asp-action="add">Ekle</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>İd</th>
+            <th>Albüm No</th>
+            <th>Album Tür</th>
+            <th>Sanatçı Bilgi</th>
+            <th>Albüm Adı</th>
+            <th>Albüm Fiyat</th>
+            <th>Yerli</th>
+            <th>Manager Bilgisi</th>
+            <th>İşlem</th>
+           
+        </tr>                
+    </thead>
+    <tbody>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+                <td>@item.No</td>
+                    <td>@item.Tur</td>
+                        <td>@item.SanatciBilgi</td>
+                            <td>@item.AlbumAdi</td>
+                                <td>@item.Fiyat</td>
+                                     <td>@item.Yerli</td>
+                                        <td>@TempData["ManagerBilgisi"]</td>
+                                    <td><a asp-controller="album" asp-action="delete" asp-route-id="@item.Id">Sil</a>
+                                                 <a asp-controller="album" asp-action="update" asp-route-id="@item.Id">Güncelle</a>
+
+                                    
+                                    </td>
+
+        </tr>
+    }
+    </tbody>
+</table>
+
+

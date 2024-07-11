@@ -1,0 +1,80 @@
+﻿@model IEnumerable<tiyatroff.Models.Gosterim>
+
+@{
+    ViewData["Title"] = "Gösterimler";
+}
+
+<h1>Gösterimler</h1>
+
+<p>
+    <a asp-action="Create">Yeni Gösterim Oluştur</a>
+</p>
+<table class="table table-bordered table-striped" id="list">
+    <thead class="bg-dark text-white">
+        <tr>
+          
+            <th>
+                @Html.DisplayNameFor(model => model.Oyun.OyunFoto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Oyun.OyunAd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salon.SalonAd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salon.SalonAdres)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tarih)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fiyat)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                
+                <td>
+                    <img src="@Url.Content(item.Oyun.OyunFoto)" alt="Oyun Resmi" style="width: 50px; height: 50px;" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Oyun.OyunAd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salon.SalonAd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salon.SalonAdres)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tarih)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fiyat)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.GosterimId">Düzenle</a> |
+                    <a asp-action="Details" asp-route-id="@item.GosterimId">Detaylar</a> |
+                    <a asp-action="Delete" asp-route-id="@item.GosterimId">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css" />
+
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#list').DataTable({
+        });
+    });
+</script>

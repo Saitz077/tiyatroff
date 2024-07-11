@@ -1,0 +1,60 @@
+﻿@model odevnorthwind.Models.Cascade
+@{
+    // ViewData["Title"] = "Index";
+}
+
+<h1>Index Dosyası</h1>
+<h2>17 155 021</h2>
+<div class="form-group">
+    @Html.Label("Region Bilgisi")
+    @Html.DropDownList("RegionId",Model.RegionList,"--Ana Bölgeyi Seç--",new {@class="form-control"})
+    <br />
+    @Html.Label("Territory Bilgisi")
+    @Html.DropDownList("TerritoryId",Model.TerritorieList,"--Gönderim Alt Bölgelerini Seç--",new {@class="form-control"})
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@* <script>
+    $(function () {
+        $('#RegionId').change(function () {
+            var id = $('#RegionId').val();
+            $.ajax({
+                url:'/Demo/GetTerritories',
+                data: {RegionId.id},
+                type:"POST",
+                dataType:"Json",
+                success: function (data) {
+                    console.log(data)
+                    $('TerritoryId').empty();
+                    for (var i = 0; i < data.length; i++) {
+                        $('TerritoryId').append("<option value='"+data[i].Value+"'>"+data[i].Text+"</option>")
+                    }
+                }
+            })
+        })
+    })
+</script> *@
+<script>
+    $(function () {
+        $('#RegionId').change(function () {
+            var id = $('#RegionId').val();
+            $.ajax({
+                url: '/Demo/GetTerritories',
+                data: { RegionId: id },
+                type: "POST",
+                dataType: "Json",
+                success: function (data) {
+                    console.log(data);
+                    $('#TerritoryId').empty();
+                    for (var i = 0; i < data.length; i++) {
+
+                        $('#TerritoryId').append("<option value='" + data[i].Value + "'>" + data[i].Text + "</option>");
+
+                    }
+                }
+            });
+        });
+    });
+</script>

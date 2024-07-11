@@ -1,0 +1,82 @@
+﻿@model tiyatroff.Models.Gosterim
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Ekle</h1>
+
+<h4>Gosterim</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="GosterimId" class="control-label"></label>
+                <input asp-for="GosterimId" class="form-control" />
+                <span asp-validation-for="GosterimId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OyunId" class="control-label"></label>
+                <select asp-for="OyunId" class="form-control" asp-items="ViewBag.OyunId"></select>
+            </div>
+
+            <div class="form-group">
+
+                <label asp-for="IlceId" class="control-label"></label>
+                @Html.DropDownListFor(model => model.IlceId,ViewBag.ListofIlce as SelectList,"İlçe Seçiniz",new {@class="form-control"})
+            </div>
+            <div class="form-group">
+
+                <label asp-for="SalonId" class="control-label"></label>
+                @Html.DropDownListFor(model => model.SalonId,new SelectList(""),"Salon Seçiniz",new {@class="form-control"})
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Tarih" class="control-label"></label>
+                <input asp-for="Tarih" class="form-control" />
+                <span asp-validation-for="Tarih" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fiyat" class="control-label"></label>
+                <input asp-for="Fiyat" class="form-control" />
+                <span asp-validation-for="Fiyat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Listeye Dön</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<script>
+    $(document).ready(function () {
+        $('#IlceId').change(function () {
+            var id = $('#IlceId').val();
+            $.ajax({
+                url: '/Gosterims/GetSalonlarByIlce',
+                data: { IlceId: id },
+                type: "POST",
+                dataType: "Json",
+                success: function (data) {
+                    console.log(data);
+                    $('#SalonId').empty();
+                    for (var i = 0; i < data.length; i++) {
+                        $('#SalonId').append("<option value='" + data[i].Value + "'>" + data[i].Text + "</option>");
+                    }
+                }
+            });
+        });
+    });
+</script>
